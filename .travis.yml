@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+
+services: 
+  - postgresql
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: Fulu+ZkDdX+lKGHtXfVRYA+vk2BIMW033qEhM+5oXU+qT3eKtAXj/ByOV1i9oqE86VsuwpLAVzaV+i4Ump9/2GoU3+TcfOkXxkuZtutWb4PC+CQztqnPwjeWvsuAevMCQX/VmZJUVcIJDsNcED51zlkzS/5lACJy+ApKUiF87x2VlrYj6FvxK3o8fT/BCG0bFdD+V0Ue2x/eGY/ryE0I1EUH0PZjuKnR/gzCKWcuX6H8Esc5ev/RgEnItX+AE0Z9MrJdfYqaDh7VP7bH8FlaH3NpY+GHXSNwu+t40DwDeYSzVj6G6ZPBoWRSaQQLY63u9V59nrRcgJ1pw0yJXWk8y4XqPqMdz4Wmn4lI86CWb48aQDzRvRSi8h1rE3KJBgVedmyuKSdOXBI0dQ13bF30FGLe4OCzbTb0LahRUkA1yid+O5cDH9EalBJ2+LNdXk1XMQwI8lPoLZIJtBklmywqD8ZxXq92fX+Lc/AvTLR5fBIb8YXESLoidu3ssgAO0Cf+DHKP7BYvtgqV0OB2gwbQ+hYZxpKsf1Bf+4ARVh7bJt63IgQViFX0279fmGvsZWKk2cfNb0lQYKdbSCGuwIPTB4Bb5ycEroV/12L8UO7O/hEEMuccYC2vfmxNqf9BQL+g4ou6UTmOqB+5mJibKZ+5+f0iF+Z+BKQdD/ko8YhtVfE=
+  app: smadder
+  on:
+    repo: tmzhuang/smadder
